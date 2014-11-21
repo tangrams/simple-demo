@@ -1,4 +1,7 @@
-tangram-demo
-============
+# tangram-demo
 
-A simple example of a Tangram demo
+A demo showing the basic Tangram demo setup.
+
+### Installation
+
+    npm install
