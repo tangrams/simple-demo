@@ -9,27 +9,18 @@
     }
 
     // default source, can be overriden by URL
-    var default_tile_source = 'ghosts',
+    var default_tile_source = 'mapzen',
         rS;
 
     var tile_sources = {
-        'ghosts': {
-            source: {
-                type: 'GeoJSONTileSource',
-                url:  appendProtocol('//vector.mapzen.com/osm/all/{z}/{x}/{y}.json')
-            },
-            layers: 'layers.yaml',
-            styles: 'styles.yaml'
-        },
         'mapzen': {
             source: {
                 type: 'GeoJSONTileSource',
-                url:  appendProtocol('//vector.mapzen.com/osm/all/{z}/{x}/{y}.json')
+                url:  'http://vector.mapzen.com/osm/all/{z}/{x}/{y}.json'
             },
             layers: 'layers.yaml',
             styles: 'styles.yaml'
-        },
-
+        }
     };
 
     var locations = {
@@ -102,7 +93,7 @@
 
     var map = L.map('map', {
         maxZoom: 20,
-        minZoom: 13,
+        minZoom: 1,
         inertia: false,
         keyboard: true
     });
@@ -215,13 +206,6 @@
 
         // Show selected feature on hover
         scene.container.addEventListener('mousemove', function (event) {
-            // if (gui['feature info'] == false) {
-            //     if (selection_info.parentNode != null) {
-            //         selection_info.parentNode.removeChild(selection_info);
-            //     }
-
-            //     return;
-            // }
 
             var pixel = { x: event.clientX, y: event.clientY };
 
@@ -236,13 +220,6 @@
                         if (feature.properties.name != null) {
                             label = feature.properties.name;
                         }
-
-                        // if (feature.properties.layer == 'buildings' && feature.properties.height) {
-                        //     if (label != '') {
-                        //         label += '<br>';
-                        //     }
-                        //     label += feature.properties.height + 'm';
-                        // }
 
                         if (label != '') {
                             selection_info.style.left = (pixel.x + 5) + 'px';
@@ -299,8 +276,6 @@
         layer.on('init', function() {            
             if (url_mode) {
                 gl_mode_options.setup(url_mode);
-            } else {
-                scene.refreshModes();
             }
             updateURL();
 
