@@ -9,14 +9,15 @@ camera:
     # type: flat
 
 lighting:
+    type: directional
+    direction: [0, 1, -.5]
+    ambient: 0.5
+
     # type: point
     # position: [0, 0, 150] # relative to camera position, in pixels
-    # ambient: 0.5
-    # backlight: true
+    # ambient: 0.25
+    # backlight: true # illuminates buildings when the light is inside them
 
-    type: directional
-    direction: [-1, 0, -.5]
-    ambient: 0.5
 
 layers:
     earth:
@@ -24,13 +25,13 @@ layers:
             default: [0.175, 0.175, 0.175]
 
     landuse:
-        interactive: true
+        interactive: true  # shows popup labels
         color:
             default: [0.5, 0.875, 0.5]
             pitch: [0.3, 0.675, 0.3]
 
     water:
-        interactive: true
+        interactive: true  # shows popup labels
         color:
             default: [0.5, 0.5, 0.875]
         outline:
@@ -47,7 +48,7 @@ layers:
                     }
 
     roads:
-        interactive: true
+        interactive: true  # shows popup labels
         order: function () { return feature.sort_key * .000025; }
         color:
             default: [0.4, 0.4, 0.4]
@@ -75,9 +76,14 @@ layers:
 
     buildings:
         # filter: function () { return feature.name != null; }
-        interactive: true
+        interactive: true  # shows popup labels
         color:
-            default: function () { var h = feature.height || 20; h = Math.min((h + 50) / 250, 1.0); return [h, h, h]; }
+            default: |
+                function () {
+                    var h = feature.height || 20;
+                    h = Math.min((h + 50)/ 250, .8);
+                    return [h, h, h];
+                }
             # default: Style.color.randomColor
         extrude:
             default: function () { return ((zoom >= 15 && feature.height > 20) || zoom >= 16) }
@@ -87,7 +93,7 @@ layers:
             name: points
         filter: function () { return zoom >= 15 && feature.name != null; }
         # visible: false
-        interactive: true
+        interactive: true  # shows popup labels
         color:
             default: [1, 1, 0]
         size:
