@@ -1,0 +1,3 @@
+node_modules/tangram/*
+!node_modules/tangram/dist/
+
