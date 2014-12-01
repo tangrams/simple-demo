@@ -2,9 +2,7 @@
 
 A demo showing the basic Tangram demo setup.
 
-### Installation
-
-    npm install
+### To run:
 
 Then start a web server in this directory:
 
