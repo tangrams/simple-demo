@@ -4,7 +4,7 @@ A demo showing the basic Tangram demo setup.
 
 ### To run:
 
-Then start a web server in this directory:
+Start a web server in the repo's directory:
 
     python -m SimpleHTTPServer 8000
     
