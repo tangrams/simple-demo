@@ -2,9 +2,13 @@
 
 A demo showing the basic Tangram demo setup.
 
-### To run:
+### To view:
 
-Then start a web server in this directory:
+[http://tangrams.github.io/tangram-demo/](http://tangrams.github.io/tangram-demo/)
+
+### To run locally:
+
+Download this repo, then start a web server in its directory:
 
     python -m SimpleHTTPServer 8000
     
