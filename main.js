@@ -32,6 +32,8 @@
 
     map.setView(map_start_location.slice(0, 2), map_start_location[2]);
 
+    var hash = new L.Hash(map);
+    
     // Resize map to window
     function resizeMap() {
         document.getElementById('map').style.width = window.innerWidth + 'px';
