@@ -6,21 +6,15 @@
 
     var locations = {
         'London': [51.508, -0.105, 15],
-        'New York': [40.70531887544228, -74.00976419448853, 16],
+        'New York': [40.70531887544228, -74.00976419448853, 15],
         'Seattle': [47.609722, -122.333056, 15]
     };
 
-    // Get location from URL
     var map_start_location = locations['New York'];
 
     /*** Map ***/
 
-    var map = L.map('map', {
-        maxZoom: 20,
-        minZoom: 1,
-        inertia: false,
-        keyboard: true
-    });
+    var map = L.map('map');
 
     var layer = Tangram.leafletLayer({
         vectorTileSource: {
@@ -29,13 +23,10 @@
         },
         vectorLayers: 'layers.yaml',
         vectorStyles: 'styles.yaml',
-        numWorkers: 2,
-        attribution: 'Map data &copy; OpenStreetMap contributors | <a href="https://github.com/tangrams/tangram" target="_blank">Source Code</a>',
-        unloadInvisibleTiles: false,
-        updateWhenIdle: false
+        attribution: 'Map data &copy; OpenStreetMap contributors | <a href="https://github.com/tangrams/tangram" target="_blank">Source Code</a>'
     });
-    window.layer = layer;
 
+    window.layer = layer;
     var scene = layer.scene;
     window.scene = scene;
 
@@ -51,7 +42,6 @@
     window.addEventListener('resize', resizeMap);
     resizeMap();
 
-    /***** Render loop *****/
     window.addEventListener('load', function () {
         // Scene initialized
         layer.addTo(map);

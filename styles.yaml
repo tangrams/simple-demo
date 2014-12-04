@@ -25,13 +25,11 @@ layers:
             default: [0.175, 0.175, 0.175]
 
     landuse:
-        interactive: true  # shows popup labels
         color:
             default: [0.5, 0.875, 0.5]
             pitch: [0.3, 0.675, 0.3]
 
     water:
-        interactive: true  # shows popup labels
         color:
             default: [0.5, 0.5, 0.875]
         outline:
@@ -48,7 +46,6 @@ layers:
                     }
 
     roads:
-        interactive: true  # shows popup labels
         order: function () { return feature.sort_key * .000025; }
         color:
             default: [0.4, 0.4, 0.4]
@@ -75,8 +72,6 @@ layers:
                 path: 1
 
     buildings:
-        # filter: function () { return feature.name != null; }
-        interactive: true  # shows popup labels
         color:
             default: |
                 function () {
@@ -86,16 +81,4 @@ layers:
                 }
             # default: Style.color.randomColor
         extrude:
-            default: function () { return ((zoom >= 15 && feature.height > 20) || zoom >= 16) }
-
-    pois:
-        mode:
-            name: points
-        filter: function () { return zoom >= 15 && feature.name != null; }
-        # visible: false
-        interactive: true  # shows popup labels
-        color:
-            default: [1, 1, 0]
-        size:
-            default: 5px
-            
+            default: function () { return zoom >= 15 }
