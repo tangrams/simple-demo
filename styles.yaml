@@ -21,64 +21,102 @@ lighting:
 
 layers:
     earth:
-        color:
-            default: [0.175, 0.175, 0.175]
+        filter: is('layer', 'earth')
+        style:
+            color: [0.175, 0.175, 0.175]
 
     landuse:
-        color:
-            default: [0.5, 0.875, 0.5]
-            pitch: [0.3, 0.675, 0.3]
+        filter: is('layer', 'landuse')
+        style:
+            color: [0.5, 0.875, 0.5]
+        pitch:
+            filter: is('properties.kind', 'pitch')
+            style:
+                color: [0.3, 0.675, 0.3]
 
     water:
-        color:
-            default: [0.5, 0.5, 0.875]
-        outline:
-            color:
-                default: [0.6, 0.6, 0.975]
-            width:
-                default:
-                    function () {
-                        return (
-                            zoom >= 16 &&
-                            (feature.kind != 'ocean' && feature.kind != 'riverbank') &&
-                            (2.5 * Math.log(zoom))
-                        );
-                    }
+        filter: is('layer', 'water')
+        style:
+            color: [0.5, 0.5, 0.875]
 
     roads:
+        filter: is('layer', 'roads')
         order: function () { return feature.sort_key * .000025; }
-        color:
-            default: [0.4, 0.4, 0.4]
-            highway: [1.0, 1.0, 1.0]
-            major_road: [0.5, 0.5, 0.5]
-            minor_road: [0.65, 0.65, 0.65]
-            path: [0.8, 0.8, 0.8]
-            rail: [0.5, 0.0, 0.0]
-            debug: [1, 0, 0]
-        width:
-            default: 8
-            highway: 10
-            major_road: 8
-            minor_road: 5
-            path: 3
+        fill:
+            style:
+                color: [0.4, 0.4, 0.4]
+                width: 8
         outline:
-            color:
-                default: [0.2, 0.2, 0.2]
-            width:
-                default: 2
-                highway: 3
-                major_road: 1
-                minor_road: 1
-                path: 1
+            style:
+                color: [.2, .2, .2]
+                width: 12
+
+        highway:
+            filter: is('properties.kind', 'highway')
+            fill:
+                style:
+                    color: [1, 1, 1]
+                    width: 10
+            outline:
+                style:
+                    width: 16
+
+            tunnels:
+                filter: is('properties.is_tunnel', 'yes')
+                fill:
+                    style:
+                        color: [.6, .6, .5]
+                        width: 10
+                outline:
+                    style:
+                        width: 16
+
+            major_road:
+                filter: is('properties.kind', 'major_road')
+                fill:
+                    style:
+                        color: [.5, .5, .5]
+                        width: 8
+                outline:
+                    style:
+                        width: 10
+            minor_road:
+                filter: is('properties.kind', 'minor_road')
+                fill:
+                    style:
+                        color: [0.65, 0.65, 0.65]
+                        width: 5
+                outline:
+                    style:
+                        width: 7
+            path:
+                filter: is('properties.kind', 'path')
+                fill:
+                    style:
+                        color: [0.8, .8, .8]
+                        width: 3
+                outline:
+                    style:
+                        width: 5
+            rail:
+                filter: is('properties.kind', 'rail')
+                fill:
+                    style:
+                        color: [0.5, .0, .0]
+                outline:
+                    style:
+                        color: [.2, .2, .2]
+                        width: 3
 
     buildings:
-        color:
-            default: |
+        filter: is('layer', 'buildings')
+        style:
+            color: |
                 function () {
                     var h = feature.height || 20;
                     h = Math.min((h + 50)/ 250, .8);
                     return [h, h, h];
                 }
-            # default: Style.color.randomColor
-        extrude:
-            default: function () { return zoom >= 15 }
+            extrude:
+                default: function () { return zoom >= 15 }
+
