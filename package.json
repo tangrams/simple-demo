@@ -1,6 +1,6 @@
 {
   "name": "demo-name",
   "dependencies": {
-	"tangram": "git://github.com/tangrams/tangram.git#iwillig/style-work"
+	"tangram": "git://github.com/tangrams/tangram.git#scenedef"
   }
 }

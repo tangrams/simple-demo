@@ -17,12 +17,11 @@
     var map = L.map('map');
 
     var layer = Tangram.leafletLayer({
-        vectorTileSource: {
+        source: {
             type: 'GeoJSONTileSource',
             url:  'http://vector.mapzen.com/osm/all/{z}/{x}/{y}.json'
         },
-        vectorLayers: 'layers.yaml',
-        vectorStyles: 'styles.yaml',
+        scene: 'styles.yaml',
         attribution: 'Map data &copy; OpenStreetMap contributors | <a href="https://github.com/tangrams/tangram" target="_blank">Source Code</a>'
     });
 
