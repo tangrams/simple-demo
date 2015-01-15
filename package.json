@@ -1,6 +1,0 @@
-{
-  "name": "demo-name",
-  "dependencies": {
-	"tangram": "git://github.com/tangrams/tangram.git"
-  }
-}

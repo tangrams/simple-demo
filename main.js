@@ -12,17 +12,31 @@
 
     var map_start_location = locations['New York'];
 
+    /*** URL parsing ***/
+
+    // leaflet-style URL hash pattern:
+    // #[zoom],[lat],[lng]
+    var url_hash = window.location.hash.slice(1, window.location.hash.length).split('/');
+
+    if (url_hash.length == 3) {
+        map_start_location = [url_hash[1],url_hash[2], url_hash[0]];
+        // convert from strings
+        map_start_location = map_start_location.map(Number);
+    }
+
     /*** Map ***/
 
-    var map = L.map('map');
+    var map = L.map('map',
+        {'keyboardZoomOffset': .05}
+    );
+
 
     var layer = Tangram.leafletLayer({
-        vectorTileSource: {
+        source: {
             type: 'GeoJSONTileSource',
             url:  'http://vector.mapzen.com/osm/all/{z}/{x}/{y}.json'
         },
-        vectorLayers: 'layers.yaml',
-        vectorStyles: 'styles.yaml',
+        scene: 'styles.yaml',
         attribution: 'Map data &copy; OpenStreetMap contributors | <a href="https://github.com/tangrams/tangram" target="_blank">Source Code</a>'
     });
 
