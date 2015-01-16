@@ -3,21 +3,10 @@ camera:
     focal_length: [[16, 2], [20, 6]] # pairs of [zoom, focal len]
     vanishing_point: [-250, -250] # relative to center of screen, in pixels
 
-    # type: isometric
-    # axis: [1, .5]
-
-    # type: flat
-
 lighting:
     type: directional
     direction: [0, 1, -.5]
     ambient: 0.5
-
-    # type: point
-    # position: [0, 0, 150] # relative to camera position, in pixels
-    # ambient: 0.25
-    # backlight: true # illuminates buildings when the light is inside them
-
 
 layers:
     earth:
@@ -54,13 +43,12 @@ layers:
             source: osm
             filter: roads
         style:
-            order: 3
-            # order: function () { return feature.sort_key * .000025; }
+            order: function () { return 3+feature.sort_key * .000025; }
             color: [0.4, 0.4, 0.4]
             width: 8
             outline:
                 color: [.2, .2, .2]
-                width: 12
+                width: 2
         highway:
             filter:
                 kind: highway
@@ -68,7 +56,7 @@ layers:
                 color: [1, 1, 1]
                 width: 10
                 outline:
-                    width: 16
+                    width: 3
         tunnel:
             filter:
                 kind: tunnel
@@ -76,31 +64,24 @@ layers:
                 color: [.6, .6, .5]
                 width: 10
                 outline:
-                    width: 16
+                    width: 4
         major_road:
             filter:
                 kind: major_road
             style:
                 color: [.5, .5, .5]
-                width: 8
-                outline:
-                    width: 10
         minor_road:
             filter:
                 kind: minor_road
             style:
                 color: [0.65, 0.65, 0.65]
                 width: 5
-                outline:
-                    width: 7
         path:
             filter:
                 kind: path
             style:
                 color: [0.8, 0.8, 0.8]
                 width: 3
-                outline:
-                    width: 5
         rail:
             filter:
                 kind: rail
@@ -109,7 +90,6 @@ layers:
                 width: 3
                 outline:
                     color: [.2, .2, .2]
-                    width: 3
     
     buildings:
         geometry:
@@ -124,4 +104,3 @@ layers:
                     return [h, h, h];
                 }
             extrude: function () { return zoom >= 15 }
-
