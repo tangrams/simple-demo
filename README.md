@@ -2,9 +2,7 @@
 
 A demo showing the basic [Tangram](http://github.com/tangrams/tangram) demo setup.
 
-### To view:
-
-[http://tangrams.github.io/tangram-demo/](http://tangrams.github.io/tangram-demo/)
+Live demo: http://tangrams.github.io/tangram-demo/
 
 ### To run locally:
 
