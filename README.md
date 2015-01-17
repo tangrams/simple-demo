@@ -1,6 +1,6 @@
 # tangram-demo
 
-A demo showing the basic Tangram demo setup.
+A demo showing the basic [Tangram](http://github.com/tangrams/tangram) demo setup.
 
 ### To view:
 
