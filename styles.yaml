@@ -20,20 +20,15 @@ layers:
             filter: earth
         style:
             order: 0
-            color: [0.175, 0.175, 0.175]
-
+            color: '#eeffff'
     landuse:
         geometry:
             source: osm
             filter: landuse
         style:
             order: 1
-            color: [0.5, 0.875, 0.5]
-        pitch:
-            filter: 
-                kind: [pitch, playground]
-            style:
-                color: [0.3, 0.675, 0.3]
+            color: '#aaffaa'
+            interactive: true
 
     water:
         geometry:
@@ -41,45 +36,35 @@ layers:
             filter: water
         style:
             order: 2
-            color: [0.5, 0.5, 0.875]
+            color: '#99ccff'
 
     roads:
         geometry:
             source: osm
             filter: roads
         style:
-            order: function () { return 3+feature.sort_key * .000025; }
-            color: [0.4, 0.4, 0.4]
+            order: 3
+            color: gray    
             width: 8
-            outline:
-                color: [.2, .2, .2]
-                width: 2
         highway:
             filter:
                 kind: highway
             style:
-                color: [1, 1, 1]
-                width: 10
+                color: '#cc6666'
+                width: 12
                 outline:
+                    color: grey
                     width: 3
         tunnel:
             filter:
-                kind: tunnel
+                is_tunnel: yes
             style:
-                color: [.6, .6, .5]
-                width: 10
-                outline:
-                    width: 4
-        major_road:
-            filter:
-                kind: major_road
-            style:
-                color: [.5, .5, .5]
+                color: tan
         minor_road:
             filter:
                 kind: minor_road
             style:
-                color: [0.65, 0.65, 0.65]
+                color: lightgrey
                 width: 5
         path:
             filter:
@@ -91,10 +76,16 @@ layers:
             filter:
                 kind: rail
             style:
-                color: [0.5, 0, 0]
+                color: pink
                 width: 3
-                outline:
-                    color: [.2, .2, .2]
+        z-ordering:
+            style:
+                order: function () { return feature.sort_key * .000025; }
+        nosubways:
+            filter:
+                railway: subway
+            style:
+                width: 0
     
     buildings:
         geometry:
@@ -106,6 +97,8 @@ layers:
                 function () {
                     var h = feature.height || 20;
                     h = Math.min((h + 50)/ 250, .8);
+                    h = Math.max(h, .5);
                     return [h, h, h];
                 }
-            extrude: function () { return zoom >= 15 }
+            extrude: true
+
