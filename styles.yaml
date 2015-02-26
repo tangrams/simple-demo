@@ -6,7 +6,6 @@ camera:
 lighting:
     type: directional
     direction: [0, 1, -.5]
-    ambient: 0.5
 
 sources:
     osm:
@@ -36,7 +35,7 @@ layers:
             filter: water
         style:
             order: 2
-            color: '#99ccff'
+            color: '#88bbee'
 
     roads:
         geometry:
@@ -60,6 +59,11 @@ layers:
                 is_tunnel: yes
             style:
                 color: tan
+            rail:
+                filter:
+                    kind: rail
+                style:
+                    width: 0
         minor_road:
             filter:
                 kind: minor_road
@@ -75,17 +79,10 @@ layers:
         rail:
             filter:
                 kind: rail
+                is_tunnel: no
             style:
                 color: pink
                 width: 3
-        z-ordering:
-            style:
-                order: function () { return feature.sort_key * .000025; }
-        nosubways:
-            filter:
-                railway: subway
-            style:
-                width: 0
     
     buildings:
         geometry:
@@ -97,7 +94,7 @@ layers:
                 function () {
                     var h = feature.height || 20;
                     h = Math.min((h + 50)/ 250, .8);
-                    h = Math.max(h, .5);
+                    h = Math.max(h, .4);
                     return [h, h, h];
                 }
             extrude: true
