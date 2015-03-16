@@ -20,14 +20,14 @@ layers:
     earth:
         data:
             source: osm
-            filter: earth
+            layer: earth
         style:
             order: 0
             color: '#ddeeee'
     landuse:
         data:
             source: osm
-            filter: landuse
+            layer: landuse
         style:
             order: 1
             color: '#aaffaa'
@@ -36,7 +36,7 @@ layers:
     water:
         data:
             source: osm
-            filter: water
+            layer: water
         style:
             order: 2
             color: '#88bbee'
@@ -44,7 +44,7 @@ layers:
     roads:
         data:
             source: osm
-            filter: roads
+            layer: roads
         style:
             order: 3
             color: gray    
@@ -91,7 +91,7 @@ layers:
     buildings:
         data:
             source: osm
-            filter: buildings
+            layer: buildings
         style:
             order: 4
             color: |
