@@ -13,8 +13,8 @@ lights:
 
 sources:
     osm:
-        type: GeoJSONTileSource
-        url:  http://vector.mapzen.com/osm/all/{z}/{x}/{y}.json
+        type: MVTSource
+        url:  http://vector.mapzen.com/osm/all/{z}/{x}/{y}.mapbox
 
 layers:
     earth:
@@ -22,6 +22,7 @@ layers:
         style:
             order: 0
             color: '#ddeeee'
+
     landuse:
         data: { source: osm }
         style:
@@ -41,6 +42,8 @@ layers:
             order: 3
             color: gray    
             width: 8
+        filter:
+            not: { kind: ["path", "rail"] }
         highway:
             filter:
                 kind: highway
@@ -50,35 +53,12 @@ layers:
                 outline:
                     color: grey
                     width: 3
-        tunnel:
-            filter:
-                is_tunnel: yes
-            style:
-                color: tan
-            rail:
-                filter:
-                    kind: rail
-                style:
-                    width: 0
         minor_road:
             filter:
                 kind: minor_road
             style:
                 color: lightgrey
                 width: 5
-        path:
-            filter:
-                kind: path
-            style:
-                color: [0.8, 0.8, 0.8]
-                width: 3
-        rail:
-            filter:
-                kind: rail
-                is_tunnel: no
-            style:
-                color: pink
-                width: 3
     
     buildings:
         data: { source: osm }
