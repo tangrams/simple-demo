@@ -19,57 +19,68 @@ sources:
 layers:
     earth:
         data: { source: osm }
-        style:
-            order: 0
-            color: '#ddeeee'
+        draw:
+            polygons:
+                order: 0
+                color: '#ddeeee'
 
     landuse:
         data: { source: osm }
-        style:
-            order: 1
-            color: '#aaffaa'
-            interactive: true
+        draw:
+            polygons:
+                order: 1
+                color: '#aaffaa'
+                interactive: true
 
     water:
         data: { source: osm }
-        style:
-            order: 2
-            color: '#88bbee'
+        draw:
+            polygons:
+                order: 2
+                color: '#88bbee'
 
     roads:
         data: { source: osm }
-        style:
-            order: 3
-            color: gray    
-            width: 8
         filter:
             not: { kind: ["path", "rail"] }
+        draw:
+            lines:
+                order: 3
+                color: gray    
+                width: 8
         highway:
             filter:
                 kind: highway
-            style:
-                color: '#cc6666'
-                width: 12
+            draw:
+                lines:
+                    order: 2
+                    color: '#cc6666'
+                    width: 12
                 outline:
+                    order: 2
+                    style: lines
                     color: grey
-                    width: 3
+                    width: 15
         minor_road:
             filter:
                 kind: minor_road
-            style:
-                color: lightgrey
-                width: 5
+            draw:
+                lines:
+                    order: -2
+                    color: lightgrey
+                    width: 5
     
     buildings:
         data: { source: osm }
-        style:
-            order: 4
-            color: |
-                function () {
-                    var h = feature.height || 20;
-                    h = Math.min((h + 50)/ 250, .8);
-                    h = Math.max(h, .4);
-                    return [h, h, h];
-                }
-            extrude: true
+        draw:
+            polygons:
+                order: 4
+                color: |
+                    function () {
+                        var h = feature.height || 20;
+                        h = Math.min((h + 50)/ 250, .8);
+                        h = Math.max(h, .4);
+                        return [h, h, h];
+                    }
+                extrude: true
 
