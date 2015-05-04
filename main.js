@@ -30,9 +30,8 @@
         {'keyboardZoomOffset': .05}
     );
 
-
     var layer = Tangram.leafletLayer({
-        scene: 'styles.yaml',
+        scene: 'scene.yaml',
         attribution: 'Map data &copy; OpenStreetMap contributors | <a href="https://github.com/tangrams/tangram" target="_blank">Source Code</a>'
     });
 
