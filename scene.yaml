@@ -48,6 +48,7 @@ layers:
                 order: 3
                 color: gray    
                 width: 8
+                cap: round
         highway:
             filter:
                 kind: highway
@@ -61,6 +62,7 @@ layers:
                     style: lines
                     color: grey
                     width: 15
+                    cap: round
         minor_road:
             filter:
                 kind: minor_road
