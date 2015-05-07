@@ -6,8 +6,6 @@ var map = L.map('map',
 
 var layer = Tangram.leafletLayer({
     scene: 'scene.yaml',
-    // preUpdate: preUpdate,
-    // postUpdate: postUpdate,
     attribution: 'Map data &copy; OpenStreetMap'
 });
 
