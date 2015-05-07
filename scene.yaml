@@ -30,7 +30,6 @@ layers:
             polygons:
                 order: 1
                 color: '#aaffaa'
-                interactive: true
 
     water:
         data: { source: osm }
@@ -62,7 +61,6 @@ layers:
                     style: lines
                     color: grey
                     width: 15
-                    cap: round
         minor_road:
             filter:
                 kind: minor_road
@@ -76,7 +74,6 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                animated: true
                 order: 4
                 color: |
                     function () {
