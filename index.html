@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vector map</title>
+    <title>Simple demo – Tangram</title>
     <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
 
     <style>
@@ -38,6 +38,9 @@
     <!-- Main tangram library -->
     <script src="https://rawgit.com/tangrams/tangram/8c09d5b88020d62fab09f5a98dc375615f400f36/dist/tangram.min.js"></script>
 
+    <!-- Mapzen bug UI component -->
+    <script src='//s3.amazonaws.com/assets-staging.mapzen.com/ui/components/bug/bug.min.js'></script>
+
     <!-- Demo module -->
     <script src="main.js"></script>
 
@@ -45,5 +48,17 @@
     <script type="text/javascript">
       window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
     </script>
+
+        <!-- Mapzen bug -->
+    <script src='//s3.amazonaws.com/assets-staging.mapzen.com/ui/components/bug/bug.min.js'></script>
+    <script>
+    var mzBug = new MapzenBug({
+      name: 'Tangram simple-demo',
+      link: 'https://mapzen.com/projects/tangram',
+      tweet: 'A simple Tangram WebGL map demo from @mapzen',
+      repo: 'https://github.com/tangrams/simple-demo/'
+    });
+    </script>
+
   </body>
 </html>
