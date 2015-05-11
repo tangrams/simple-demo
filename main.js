@@ -6,7 +6,7 @@ var map = L.map('map',
 
 var layer = Tangram.leafletLayer({
     scene: 'scene.yaml',
-    attribution: 'Map data &copy; OpenStreetMap'
+    attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
 });
 
 window.layer = layer;
@@ -27,4 +27,3 @@ function resizeMap() {
 
 window.addEventListener('resize', resizeMap);
 resizeMap();
-
