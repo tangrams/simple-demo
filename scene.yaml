@@ -19,21 +19,21 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                order: 0
+                order: function() { return feature.sort_key; }
                 color: '#ddeeee'
 
     landuse:
         data: { source: osm }
         draw:
             polygons:
-                order: 1
+                order: function() { return feature.sort_key; }
                 color: '#aaffaa'
 
     water:
         data: { source: osm }
         draw:
             polygons:
-                order: 2
+                order: function() { return feature.sort_key; }
                 color: '#88bbee'
 
     roads:
@@ -42,7 +42,7 @@ layers:
             not: { kind: ["path", "rail"] }
         draw:
             lines:
-                order: 4
+                order: function() { return feature.sort_key; }
                 color: gray
                 width: 8
                 cap: round
@@ -51,7 +51,7 @@ layers:
                 kind: highway
             draw:
                 lines:
-                    order: 5
+                    order: function() { return feature.sort_key; }
                     color: '#cc6666'
                     width: 12
                     outline:
@@ -62,7 +62,7 @@ layers:
                 kind: minor_road
             draw:
                 lines:
-                    order: 3
+                    order: function() { return feature.sort_key; }
                     color: lightgrey
                     width: 5
 
@@ -70,7 +70,7 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                order: 6
+                order: function() { return feature.sort_key; }
                 color: |
                     function () {
                         var h = feature.height || 20;
