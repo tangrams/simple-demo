@@ -12,7 +12,7 @@ lights:
 sources:
     osm:
         type: TopoJSON
-        url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-HqUVidw
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=mapzen-QF1osLn
         max_zoom: 16
 
 layers:
@@ -20,30 +20,30 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: '#ddeeee'
 
     landuse:
         data: { source: osm }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: '#aaffaa'
 
     water:
         data: { source: osm }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: '#88bbee'
 
     roads:
         data: { source: osm }
         filter:
-            not: { kind: ["path", "rail"] }
+            not: { kind: [path, rail, ferry] }
         draw:
             lines:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: gray
                 width: 8
                 cap: round
@@ -52,7 +52,7 @@ layers:
                 kind: highway
             draw:
                 lines:
-                    order: function() { return feature.sort_key; }
+                    order: function() { return feature.sort_rank; }
                     color: '#cc6666'
                     width: 12
                     outline:
@@ -63,7 +63,7 @@ layers:
                 kind: minor_road
             draw:
                 lines:
-                    order: function() { return feature.sort_key; }
+                    order: function() { return feature.sort_rank; }
                     color: lightgrey
                     width: 5
 
@@ -71,7 +71,7 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: |
                     function () {
                         var h = feature.height || 20;
