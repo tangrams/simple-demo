@@ -11,10 +11,10 @@ lights:
 
 sources:
     mapzen:
-        type: TopoJSON
-        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        type: MVT
+        url: https://tile.nextzen.org/tilezen/vector/v1/all/{z}/{x}/{y}.mvt
         url_params:
-            api_key: mapzen-tDHBHDp
+            api_key: JJiaZE63TZObzPrmx0TQkw
         max_zoom: 16
 
 layers:
