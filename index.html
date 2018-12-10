@@ -5,11 +5,8 @@
     http://github.com/tangrams/tangram
     http://mapzen.com
 -->
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simple demo – Tangram</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 
@@ -36,30 +33,19 @@
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 
     <!-- Main tangram library -->
-    <script src="https://unpkg.com/tangram@0.15.1/dist/tangram.min.js"></script>
+    <script src="https://unpkg.com/tangram@0.15.1/dist/tangram.debug.js"></script>
 
     <!-- Demo setup -->
     <script>
-      
+
         var map = L.map('map');
 
         var tangramLayer = Tangram.leafletLayer({
             scene: 'scene.yaml',
-            attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
+            attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors'
         });
-        
-        var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-		});
 
         tangramLayer.addTo(map);
-        
-        var baseMaps = {
-            'TangramLayer': tangramLayer,
-            'baseOSM': osmLayer
-        }
-        L.control.layers(baseMaps, null, {collapsed: false, position: 'bottomleft'}).addTo(map);
-
 
         map.setView([40.70531887544228, -74.00976419448853], 15);
 
