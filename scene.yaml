@@ -10,7 +10,7 @@ lights:
         ambient: 1
 
 sources:
-    mapzen:
+    nextzen:
         type: MVT
         url: https://tile.nextzen.org/tilezen/vector/v1/all/{z}/{x}/{y}.mvt
         url_params:
@@ -19,28 +19,28 @@ sources:
 
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: function() { return feature.sort_rank; }
                 color: '#ddeeee'
 
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: function() { return feature.sort_rank; }
                 color: '#aaffaa'
 
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: function() { return feature.sort_rank; }
                 color: '#88bbee'
 
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter:
             not: { kind: [path, rail, ferry] }
         draw:
@@ -70,7 +70,7 @@ layers:
                     width: 5
 
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: function() { return feature.sort_rank; }
