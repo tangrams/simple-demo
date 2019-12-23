@@ -12,9 +12,10 @@ lights:
 sources:
     nextzen:
         type: MVT
-        url: https://tile.nextzen.org/tilezen/vector/v1/all/{z}/{x}/{y}.mvt
+        url: https://tile.nextzen.org/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
         url_params:
-            api_key: d161Q8KATMOhSOcVGNyQ8g
+            api_key: NaqqS33fTUmyQcvbuIUCKA
+        tile_size: 512
         max_zoom: 16
 
 layers:
