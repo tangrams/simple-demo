@@ -8,7 +8,13 @@ Live demo: http://tangrams.github.io/simple-demo/
 
 ### To run locally:
 
-Download this repo, then start a web server in its directory:
+1) Clone this repo
+
+2) Sign up for a Nextzen API key here: https://developers.nextzen.org/
+
+3) Edit the `scene.yaml` file and replace the `api_key` value with your own key.
+
+4) Start a web server in this demo's directory:
 
     python -m SimpleHTTPServer 8000
     
@@ -16,4 +22,4 @@ If that doesn't work, try:
 
     python -m http.server 8000
     
-Then navigate to: [http://localhost:8000](http://localhost:8000)
+5) Then navigate to: [http://localhost:8000](http://localhost:8000)
