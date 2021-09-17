@@ -1,6 +1,6 @@
 # simple-demo
 
-The simplest possible [Tangram](http://github.com/tangrams/tangram) setup.
+A very simple [Tangram](http://github.com/tangrams/tangram) setup.
 
 Live demo: http://tangrams.github.io/simple-demo/
 
